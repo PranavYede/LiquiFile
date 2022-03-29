@@ -101,7 +101,7 @@ export class GenerateComponent implements OnInit {
         break;
       }
   }
-  alert("Please Wait While we are uploading your files");
+  alert("Please Wait While we are processing your files");
   setTimeout(() => {
     console.log(UploadArray);
     localStorage.setItem(this.textLabel.toString(), JSON.stringify(UploadArray));
