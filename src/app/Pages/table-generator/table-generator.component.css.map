@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "table-generator.component.sass"
+    ],
+    "names": [],
+    "file": "table-generator.component.css"
+}

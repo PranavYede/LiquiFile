@@ -1,9 +1,26 @@
-<mat-toolbar color="primary">
-    <mat-toolbar-row>
-      <span [routerLink]="['/']">LquiFile</span>
-      <span style="flex: auto;"></span>
-      <button mat-button routerLink="/scan">
-            Scan
-      </button>
-    </mat-toolbar-row>
-  </mat-toolbar>
+<mat-toolbar style="background-color: black; color: chartreuse">
+  <mat-toolbar-row>
+    <span
+      style="
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+          'Lucida Sans', Arial, sans-serif;
+        padding-left: 10px;
+      "
+      [routerLink]="['/']"
+      ><mat-icon style="color: darkseagreen"> drive_file_move</mat-icon>
+      LiquiFile</span
+    >
+    <span style="flex: 1 1 auto"></span>
+    <button
+      style="
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+          'Lucida Sans', Arial, sans-serif;
+        font-size: large;
+      "
+      mat-button
+      routerLink="/scan"
+    >
+      Scan <mat-icon style="color: darkseagreen">qr_code</mat-icon>
+    </button>
+  </mat-toolbar-row>
+</mat-toolbar>

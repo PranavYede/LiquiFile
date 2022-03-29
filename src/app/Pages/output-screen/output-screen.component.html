@@ -1,8 +1,28 @@
-<p>{{getQrCodeLabel()}}</p>
-
-<qr-code [value]="getSamples()"
-         size="300"
-         errorCorrectionLevel="M"
-         centerImageSrc="undefined"
-         centerImageSize="undefined">
-</qr-code>
+<div>
+  <p
+    style="
+      margin-top: 30px;
+      margin-left: 20px;
+      font-family: Tahoma, sans-serif;
+      color: rgb(45, 51, 42);
+      margin-top: 20px;
+      padding: 0px 0px 6px 0px;
+      font-size: 30px;
+      line-height: 20px;
+      letter-spacing: 1px;
+      font-weight: bold;
+    "
+  >
+    QR Code
+  </p>
+</div>
+<div style="padding-left: 40%">
+  <qr-code
+    [value]="getSamples()"
+    size="300"
+    errorCorrectionLevel="M"
+    centerImageSrc="undefined"
+    centerImageSize="undefined"
+  >
+  </qr-code>
+</div>

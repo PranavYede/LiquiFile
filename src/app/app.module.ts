@@ -31,6 +31,7 @@ import { QrCodeModule } from 'ng-qrcode';
 import { FormsModule } from '@angular/forms';
 import { OutputScreenComponent } from './Pages/output-screen/output-screen.component';
 import { ScanoutputscreenComponent } from './Pages/scanoutputscreen/scanoutputscreen.component';
+import { FooterComponent } from './footer/footer.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,6 +45,7 @@ import { ScanoutputscreenComponent } from './Pages/scanoutputscreen/scanoutputsc
     TableGeneratorComponent,
     OutputScreenComponent,
     ScanoutputscreenComponent,
+    FooterComponent,
   ],
   imports: [
     provideAuth(() => getAuth()),

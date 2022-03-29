@@ -1,33 +1,128 @@
 <ngx-file-drag-drop
-      [formControl]="fileControl"
-      activeBorderColor="#3F51B5"
-      (valueChanged)="onValueChange($event)"
-      [multiple]="multiple"
-    >
-    </ngx-file-drag-drop>
-    <ul>
-        <li *ngFor="let File of this.fileControl.value">
-          Name - {{File.name!=""?File.name:"File Removed"}} 
-          Size - {{File.size/1000000}} MB 
-          type - {{File.type}} 
-          lastModified - {{File.lastModified}}
-         </li>
-      </ul>
-    <mat-label>QrCode Name</mat-label>
-    <br>
-    <p><input type="text" id="username" name="username" [(ngModel)]="textLabel"></p>
-    <br>
-    <mat-hint *ngIf="lastNameAutofilled">Autofilled!</mat-hint>
+  style="margin-top: 50px; margin-bottom: 50px"
+  [formControl]="fileControl"
+  activeBorderColor="#3F51B5"
+  (valueChanged)="onValueChange($event)"
+  [multiple]="multiple"
+>
+</ngx-file-drag-drop>
+<ul>
+  <li *ngFor="let File of this.fileControl.value">
+    Name - {{ File.name != "" ? File.name : "File Removed" }} Size -
+    {{ File.size / 1000000 }} MB type - {{ File.type }} lastModified -
+    {{ File.lastModified }}
+  </li>
+</ul>
 
-    <button (click)="onSubmit()">Upload</button>
+<hr />
+<br />
+<br />
 
-    <div>
-      <p>Rules</p>
-      <p>1.Max number of Files to be uploaded is limited to 5</p>
-      <p>2.Max size of File Should be limited to 100MB/File</p>
-      <p>3.After 3 Days Files will be Purged </p>
-      <p>If you want to remove above Contraints Buy Prime Account @rs only</p>
-      <p>So Hurry up!!!</p>
-    </div>
+<mat-label
+  style="
+    margin-top: 30px;
+    margin-left: 20px;
+    font-family: Tahoma, sans-serif;
+    color: rgb(45, 51, 42);
+    margin-top: 20px;
+    padding: 0px 0px 6px 0px;
+    font-size: 30px;
+    line-height: 20px;
+    letter-spacing: 1px;
+    font-weight: bold;
+  "
+  >QR Code Name :
+</mat-label>
+<input
+  style="height: 32px; width: 400px"
+  type="text"
+  id="username"
+  name="username"
+  placeholder=" .  .  .  "
+  [(ngModel)]="textLabel"
+/>
 
-      
+<br />
+<mat-hint *ngIf="lastNameAutofilled">Autofilled!</mat-hint>
+
+<button
+  style="
+    margin-top: 50px;
+    margin-bottom: 50px;
+    margin-left: 20px;
+    border: none;
+    color: #090909;
+    padding: 0.7em 1.7em;
+    font-size: 18px;
+    border-radius: 0.5em;
+    background: #b9b8b8;
+    border: 1px solid #b9b8b8;
+    transition: all 0.3s;
+    box-shadow: 6px 6px 12px #c5c5c5, -6px -6px 12px #ffffff;
+  "
+  (click)="onSubmit()"
+>
+  Upload
+</button>
+
+<div style="margin-left: 20px">
+  <p
+    style="
+      font-family: Tahoma, sans-serif;
+      color: rgb(45, 51, 42);
+      margin-top: 20px;
+      padding: 0px 0px 6px 0px;
+      font-size: 25px;
+      line-height: 17px;
+      letter-spacing: 1px;
+      font-weight: bold;
+    "
+  >
+    Rules -
+  </p>
+  <p
+    style="
+      font-family: Garamond, serif;
+      color: #504d4d;
+      margin-top: 5px;
+      font-size: 25px;
+      line-height: 10px;
+    "
+  >
+    1.Maximum number of files to be uploaded is limited to 5
+  </p>
+  <p
+    style="
+      font-family: Garamond, serif;
+      color: #504d4d;
+      margin-top: 5px;
+      font-size: 25px;
+      line-height: 10px;
+    "
+  >
+    2.Maximum size of file should be limited to 100MB/file
+  </p>
+  <p
+    style="
+      font-family: Garamond, serif;
+      color: #504d4d;
+      margin-top: 5px;
+      font-size: 25px;
+      line-height: 10px;
+    "
+  >
+    3.After 3 days files will be purged
+  </p>
+  <p
+    style="
+      font-family: Garamond, serif;
+      color: #504d4d;
+      margin-top: 5px;
+      font-size: 25px;
+      line-height: 10px;
+    "
+  >
+    If you want to remove above constraints, you can buy Prime Account
+    @299rs/year
+  </p>
+</div>

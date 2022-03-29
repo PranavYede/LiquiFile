@@ -52,28 +52,28 @@ export class GenerateComponent implements OnInit {
       var credential = error.credential;
       // ...
       alert(errorMessage);
-      alert("Plz Login with Google To Proceed Further")
+      alert("Please Login with Google To Proceed Further")
     })
   }
 
   firebaseSignout(){
     firebase.auth().signOut().then(function() {
     // Sign-out successful.
-    console.log(" user got signed out");
+    console.log(" User got signed out");
     }).catch(function(error) {
     console.log('sign out error ',error);
     // An error happened.
     });
     }
   onValueChange(file: File[]) {
-    console.log("hello there",this.fileControl.value)
+    console.log("Hello there",this.fileControl.value)
   }
   onSubmit() {
     if(firebase.auth().currentUser==null){
-      console.log("user signed in "+firebase.auth().currentUser);
+      console.log("User signed in "+firebase.auth().currentUser);
       this.firebaseSignIn();
     }else{
-      console.log("user signed in"+firebase.auth().currentUser);
+      console.log("User signed in"+firebase.auth().currentUser);
       this.uploadpreparation();
     }
   }
@@ -101,7 +101,7 @@ export class GenerateComponent implements OnInit {
         break;
       }
   }
-  alert("Plz Wait While we are uploading your files");
+  alert("Please Wait While we are uploading your files");
   setTimeout(() => {
     console.log(UploadArray);
     localStorage.setItem(this.textLabel.toString(), JSON.stringify(UploadArray));
@@ -120,8 +120,8 @@ export class GenerateComponent implements OnInit {
 
   UploadFile(file: File,uris :String[]) {
     if(firebase.auth().currentUser==null){
-      console.log("user signed in "+firebase.auth().currentUser);
-      alert("Plz Login with Google To Proceed Further");
+      console.log("User signed in "+firebase.auth().currentUser);
+      alert("Please Login with Google To Proceed Further");
       this.firebaseSignIn();
     }else{
     const UploadTask = firebase.storage().ref().child(firebase.auth().currentUser?.email+"/"+this.textLabel+"/"+file.name).put(file);
@@ -146,7 +146,7 @@ export class GenerateComponent implements OnInit {
 
   ngOnInit(): void {
     this.fileControl.valueChanges.subscribe((files: File[]) =>
-      console.log("hello there",this.fileControl.value, this.fileControl.valid)
+      console.log("Hello there",this.fileControl.value, this.fileControl.valid)
     );
   }
 
