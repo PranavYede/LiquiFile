@@ -9,19 +9,21 @@ import { environment } from 'src/environments/environment';
 export class ScanoutputscreenComponent implements OnInit {
 
   constructor() { }
+  myArray:any;
 
   ngOnInit(): void {
+    this.myArray = this.getUrls();
+    console.log(this.myArray);
   }
 
   getValue(){
-    console.log(window.history.state);
     return window.history.state.data.toString();
   }
 
   getUrls(){
-    const myArray = window.history.state.data.toString().split(",");
-    console.log(myArray);
-    return myArray;
+    this.myArray = window.history.state.data.toString().split(",");
+    console.log(this.myArray);
+    return this.myArray;
   }
   downloadall(){
     const myArray = window.history.state.data.toString().split(",");
@@ -29,6 +31,7 @@ export class ScanoutputscreenComponent implements OnInit {
     for(let i=0;i<myArray.length;i++){
         const xhr = new XMLHttpRequest();
         xhr.setRequestHeader('Access-Control-Allow-Origin', 'https://firebasestorage.googleapis.com/');
+        xhr.setRequestHeader('Access-Control-Allow-Methods', 'https://liquifile.netlify.app/');
         xhr.setRequestHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
         xhr.responseType = 'blob';
         xhr.onload = (event) => {

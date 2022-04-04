@@ -8,6 +8,8 @@ import 'firebase/compat/storage';
 // import { Auth } from "@angular/fire/auth";
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
+import {ConnectionService} from 'ng-connection-service';
+
 // import * as firebase from 'firebase/app';
 @Component({
   selector: 'app-generate',
@@ -19,9 +21,20 @@ export class GenerateComponent implements OnInit {
   firstNameAutofilled!: boolean;
   lastNameAutofilled!: boolean;
   textLabel : String= "";
+  isConnected = true;  
+  noInternetConnection: boolean=false;  
   // uris = JSON;
-  constructor(private router:Router) {
+  constructor(private connectionService: ConnectionService,private router:Router) {
     firebase.initializeApp(environment.firebaseConfig);
+    this.connectionService.monitor().subscribe(isConnected => {  
+      this.isConnected = isConnected;  
+      if (this.isConnected) {  
+        this.noInternetConnection=false;  
+      }  
+      else {  
+        this.noInternetConnection=true;  
+      }  
+    })
    }
   
   _displayedColumns = ['name', 'type', 'size', 'lastModified'];
@@ -69,6 +82,14 @@ export class GenerateComponent implements OnInit {
     console.log("Hello there",this.fileControl.value)
   }
   onSubmit() {
+    if(this.noInternetConnection){
+      alert("Can't Upload Files Without Internet Connection");
+    }else{
+      this.dothis();
+    }
+  }
+
+  dothis(){
     if(firebase.auth().currentUser==null){
       console.log("User signed in "+firebase.auth().currentUser);
       this.firebaseSignIn();

@@ -32,6 +32,9 @@ import { FormsModule } from '@angular/forms';
 import { OutputScreenComponent } from './Pages/output-screen/output-screen.component';
 import { ScanoutputscreenComponent } from './Pages/scanoutputscreen/scanoutputscreen.component';
 import { FooterComponent } from './footer/footer.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import {ConnectionServiceModule} from 'ng-connection-service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,6 +54,7 @@ import { FooterComponent } from './footer/footer.component';
     provideAuth(() => getAuth()),
     QrCodeModule,
     BrowserAnimationsModule,
+    ConnectionServiceModule,
     ReactiveFormsModule,
     FormsModule,
     NgxFileDragDropModule,
@@ -67,7 +71,13 @@ import { FooterComponent } from './footer/footer.component';
     MatInputModule,
     MatRippleModule,
     MatSelectModule,
-    MatListModule
+    MatListModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+      // Register the ServiceWorker as soon as the application is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    })
   ],exports: [
     MatButtonModule,
     MatFormFieldModule,
